@@ -337,8 +337,9 @@ const MacierzKw<T, R> &MacierzKw<T, R>::odwroc()
   { //petla dla części nad przekątną
     for (j = i - 1; j >= 0; j--)
     { //petla zerowania kolejnych kolumn
-      OdwA[j] -= A[j][i] * OdwA[i];
-      A[j] -= A[j][i] * A[i];
+      mnoznik = -A[j][i] / A[i][i];
+      OdwA[j] += mnoznik * OdwA[i];
+      A[j] += mnoznik * A[i];
     }
   }
   (*this) = OdwA;

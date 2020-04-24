@@ -2,10 +2,11 @@ var indexSectionsWithContent =
 {
   0: "dilmoprstuw",
   1: "lmuw",
-  2: "lmuw",
+  2: "lmruw",
   3: "dlmopstuw",
   4: "imr",
-  5: "s"
+  5: "r",
+  6: "s"
 };
 
 var indexSectionNames =
@@ -15,7 +16,8 @@ var indexSectionNames =
   2: "files",
   3: "functions",
   4: "variables",
-  5: "pages"
+  5: "defines",
+  6: "pages"
 };
 
 var indexSectionLabels =
@@ -25,6 +27,7 @@ var indexSectionLabels =
   2: "Pliki",
   3: "Funkcje",
   4: "Zmienne",
-  5: "Strony"
+  5: "Definicje",
+  6: "Strony"
 };
 

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ukladrownanliniowych_47',['UkladRownanLiniowych',['../classUkladRownanLiniowych.html',1,'']]]
+  ['ukladrownanliniowych_50',['UkladRownanLiniowych',['../classUkladRownanLiniowych.html',1,'']]]
 ];

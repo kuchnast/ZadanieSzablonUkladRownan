@@ -151,9 +151,9 @@ void UkladRownanLiniowych<T, R>::ObliczCramer()
 {
   MacierzKw<T, R> tempA = this->m_A;
   Wektor<T, R> tempWiersz;
-  double detA = tempA.wyznacznik();
+  T detX, detA = tempA.wyznacznik();
 
-  if (abs(detA) < 0.000001)
+  if (detA == 0)
     throw(std::runtime_error("Wyznacznik jest równy 0."));
 
   tempA.transponuj();
@@ -161,7 +161,8 @@ void UkladRownanLiniowych<T, R>::ObliczCramer()
   {
     tempWiersz = tempA[i];
     tempA[i] = this->m_b;
-    this->m_x[i] = tempA.wyznacznik() / detA;
+    detX = tempA.wyznacznik();
+    this->m_x[i] = detX / detA;
     tempA[i] = tempWiersz;
   }
 }
@@ -207,7 +208,7 @@ std::ostream &operator<<(std::ostream &strm, const UkladRownanLiniowych<T, R> &U
   cout << std::setprecision(4) << std::left;
   for (int i = 0; i < R; i++)
   {
-    strm << "| " << UklRown.PrzekazA()[i] << " | | " << setw(8) << UklRown.PrzekazX()[i] << " |";
+    strm << "| "<< UklRown.PrzekazA()[i] << " | | " << setw(8) << UklRown.PrzekazX()[i] << " |";
     if (i == R / 2)
       strm << " = ";
     else

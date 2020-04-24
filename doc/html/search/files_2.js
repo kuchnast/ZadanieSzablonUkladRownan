@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ukladrownanliniowych_2ehh_53',['UkladRownanLiniowych.hh',['../UkladRownanLiniowych_8hh.html',1,'']]]
+  ['rozmiar_2ehh_56',['rozmiar.hh',['../rozmiar_8hh.html',1,'']]]
 ];

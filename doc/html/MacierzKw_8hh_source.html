@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Zadanie Szablon Układ Równań: Plik źródłowy inc/MacierzKw.hh</title>
+<title>Zadanie Równania Liniowe: Plik źródłowy inc/MacierzKw.hh</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Zadanie Szablon Układ Równań
+   <div id="projectname">Zadanie Równania Liniowe
    </div>
   </td>
  </tr>
@@ -306,57 +306,58 @@ $(function() {
 <div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;  { <span class="comment">//petla dla części nad przekątną</span></div>
 <div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;    <span class="keywordflow">for</span> (j = i - 1; j &gt;= 0; j--)</div>
 <div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;    { <span class="comment">//petla zerowania kolejnych kolumn</span></div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;      OdwA[j] -= A[j][i] * OdwA[i];</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;      A[j] -= A[j][i] * A[i];</div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;    }</div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;  }</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;  (*this) = OdwA;</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160; </div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;  <span class="keywordflow">return</span> (*<span class="keyword">this</span>);</div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;}</div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160; </div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T, <span class="keywordtype">int</span> R&gt;</div>
-<div class="line"><a name="l00350"></a><span class="lineno"><a class="line" href="MacierzKw_8hh.html#ae872b52ccca1934cae7e58f062d2c2ea">  350</a></span>&#160;<a class="code" href="classMacierzKw.html">MacierzKw&lt;T, R&gt;</a> <a class="code" href="MacierzKw_8hh.html#ae872b52ccca1934cae7e58f062d2c2ea">operator*</a>(T l, <span class="keyword">const</span> <a class="code" href="classMacierzKw.html">MacierzKw&lt;T, R&gt;</a> &amp;M2)</div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;{</div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;  <span class="keywordflow">return</span> M2 * l;</div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;}</div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160; </div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T, <span class="keywordtype">int</span> R&gt;</div>
-<div class="line"><a name="l00356"></a><span class="lineno"><a class="line" href="MacierzKw_8hh.html#aecefbfb5b448701bd4142c492ce807de">  356</a></span>&#160;std::istream &amp;<a class="code" href="MacierzKw_8hh.html#aecefbfb5b448701bd4142c492ce807de">operator&gt;&gt;</a>(std::istream &amp;strm, <a class="code" href="classMacierzKw.html">MacierzKw&lt;T, R&gt;</a> &amp;M)</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;{</div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; R; i++)</div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;    strm &gt;&gt; M[i];</div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160; </div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;  <span class="keywordflow">return</span> strm;</div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;}</div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160; </div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T, <span class="keywordtype">int</span> R&gt;</div>
-<div class="line"><a name="l00365"></a><span class="lineno"><a class="line" href="MacierzKw_8hh.html#ac6911ccce07907d463b360f890d9e114">  365</a></span>&#160;std::ostream &amp;<a class="code" href="MacierzKw_8hh.html#ac6911ccce07907d463b360f890d9e114">operator&lt;&lt;</a>(std::ostream &amp;strm, <span class="keyword">const</span> <a class="code" href="classMacierzKw.html">MacierzKw&lt;T, R&gt;</a> &amp;M)</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;{</div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160; </div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; R; i++)</div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;    strm &lt;&lt; M[i] &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160; </div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;  <span class="keywordflow">return</span> strm;</div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;}</div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160; </div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;      mnoznik = -A[j][i] / A[i][i];</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;      OdwA[j] += mnoznik * OdwA[i];</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;      A[j] += mnoznik * A[i];</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;    }</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;  }</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;  (*this) = OdwA;</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160; </div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;  <span class="keywordflow">return</span> (*<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;}</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160; </div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T, <span class="keywordtype">int</span> R&gt;</div>
+<div class="line"><a name="l00351"></a><span class="lineno"><a class="line" href="MacierzKw_8hh.html#ae872b52ccca1934cae7e58f062d2c2ea">  351</a></span>&#160;<a class="code" href="classMacierzKw.html">MacierzKw&lt;T, R&gt;</a> <a class="code" href="MacierzKw_8hh.html#ae872b52ccca1934cae7e58f062d2c2ea">operator*</a>(T l, <span class="keyword">const</span> <a class="code" href="classMacierzKw.html">MacierzKw&lt;T, R&gt;</a> &amp;M2)</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;{</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;  <span class="keywordflow">return</span> M2 * l;</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;}</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160; </div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T, <span class="keywordtype">int</span> R&gt;</div>
+<div class="line"><a name="l00357"></a><span class="lineno"><a class="line" href="MacierzKw_8hh.html#aecefbfb5b448701bd4142c492ce807de">  357</a></span>&#160;std::istream &amp;<a class="code" href="MacierzKw_8hh.html#aecefbfb5b448701bd4142c492ce807de">operator&gt;&gt;</a>(std::istream &amp;strm, <a class="code" href="classMacierzKw.html">MacierzKw&lt;T, R&gt;</a> &amp;M)</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;{</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; R; i++)</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;    strm &gt;&gt; M[i];</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160; </div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;  <span class="keywordflow">return</span> strm;</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;}</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160; </div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T, <span class="keywordtype">int</span> R&gt;</div>
+<div class="line"><a name="l00366"></a><span class="lineno"><a class="line" href="MacierzKw_8hh.html#ac6911ccce07907d463b360f890d9e114">  366</a></span>&#160;std::ostream &amp;<a class="code" href="MacierzKw_8hh.html#ac6911ccce07907d463b360f890d9e114">operator&lt;&lt;</a>(std::ostream &amp;strm, <span class="keyword">const</span> <a class="code" href="classMacierzKw.html">MacierzKw&lt;T, R&gt;</a> &amp;M)</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;{</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160; </div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; R; i++)</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;    strm &lt;&lt; M[i] &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160; </div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;  <span class="keywordflow">return</span> strm;</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;}</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160; </div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclassMacierzKw_html_a70013b3c5994da929c923ca086ef07c1"><div class="ttname"><a href="classMacierzKw.html#a70013b3c5994da929c923ca086ef07c1">MacierzKw::operator/</a></div><div class="ttdeci">MacierzKw operator/(T l) const</div><div class="ttdoc">Dzielenie macierzy kwadratowej przez skalar.</div><div class="ttdef"><b>Definition:</b> MacierzKw.hh:224</div></div>
 <div class="ttc" id="aclassMacierzKw_html_a515d0e65a6a2e27a9900cbe5ed062881"><div class="ttname"><a href="classMacierzKw.html#a515d0e65a6a2e27a9900cbe5ed062881">MacierzKw::operator-</a></div><div class="ttdeci">MacierzKw operator-(const MacierzKw &amp;M2) const</div><div class="ttdoc">Odejmowanie dwóch macierzy kwadratowych.</div><div class="ttdef"><b>Definition:</b> MacierzKw.hh:178</div></div>
-<div class="ttc" id="aclassWektor_html"><div class="ttname"><a href="classWektor.html">Wektor</a></div><div class="ttdoc">Klasa modeluje pojęcie wektora o stałym rozmiarze.</div><div class="ttdef"><b>Definition:</b> Wektor.hh:14</div></div>
+<div class="ttc" id="aclassWektor_html"><div class="ttname"><a href="classWektor.html">Wektor</a></div><div class="ttdoc">Klasa modeluje pojęcie wektora o stałym rozmiarze.</div><div class="ttdef"><b>Definition:</b> Wektor.hh:16</div></div>
 <div class="ttc" id="aclassMacierzKw_html_a4a7069af6f5c155b3fefcfd8d24d046c"><div class="ttname"><a href="classMacierzKw.html#a4a7069af6f5c155b3fefcfd8d24d046c">MacierzKw::m_macierz</a></div><div class="ttdeci">Wektor&lt; T, R &gt; m_macierz[R]</div><div class="ttdoc">Tablica wektorów.</div><div class="ttdef"><b>Definition:</b> MacierzKw.hh:15</div></div>
-<div class="ttc" id="aMacierzKw_8hh_html_ae872b52ccca1934cae7e58f062d2c2ea"><div class="ttname"><a href="MacierzKw_8hh.html#ae872b52ccca1934cae7e58f062d2c2ea">operator*</a></div><div class="ttdeci">MacierzKw&lt; T, R &gt; operator*(T l, const MacierzKw&lt; T, R &gt; &amp;M2)</div><div class="ttdoc">Mnożenie skalara i macierzy kwadratowej.</div><div class="ttdef"><b>Definition:</b> MacierzKw.hh:350</div></div>
+<div class="ttc" id="aMacierzKw_8hh_html_ae872b52ccca1934cae7e58f062d2c2ea"><div class="ttname"><a href="MacierzKw_8hh.html#ae872b52ccca1934cae7e58f062d2c2ea">operator*</a></div><div class="ttdeci">MacierzKw&lt; T, R &gt; operator*(T l, const MacierzKw&lt; T, R &gt; &amp;M2)</div><div class="ttdoc">Mnożenie skalara i macierzy kwadratowej.</div><div class="ttdef"><b>Definition:</b> MacierzKw.hh:351</div></div>
 <div class="ttc" id="aWektor_8hh_html"><div class="ttname"><a href="Wektor_8hh.html">Wektor.hh</a></div></div>
 <div class="ttc" id="aclassMacierzKw_html_adc41c980b6e51ef1412d98ff4a59908a"><div class="ttname"><a href="classMacierzKw.html#adc41c980b6e51ef1412d98ff4a59908a">MacierzKw::wyznacznik</a></div><div class="ttdeci">T wyznacznik() const</div><div class="ttdoc">Wyznacznik macierzy kwadratowej obliczany metodą Gaussa.</div><div class="ttdef"><b>Definition:</b> MacierzKw.hh:268</div></div>
 <div class="ttc" id="aclassMacierzKw_html_a0856fced232747ad7c402f6a08557afe"><div class="ttname"><a href="classMacierzKw.html#a0856fced232747ad7c402f6a08557afe">MacierzKw::operator*</a></div><div class="ttdeci">MacierzKw operator*(const MacierzKw &amp;M2) const</div><div class="ttdoc">Mnożenie dwóch macierzy kwadratowych.</div><div class="ttdef"><b>Definition:</b> MacierzKw.hh:189</div></div>
 <div class="ttc" id="aclassMacierzKw_html"><div class="ttname"><a href="classMacierzKw.html">MacierzKw</a></div><div class="ttdoc">Klasa modeluje pojęcie macierzy kwadratowej złożonej z tablicy wektorów.</div><div class="ttdef"><b>Definition:</b> MacierzKw.hh:13</div></div>
-<div class="ttc" id="aMacierzKw_8hh_html_aecefbfb5b448701bd4142c492ce807de"><div class="ttname"><a href="MacierzKw_8hh.html#aecefbfb5b448701bd4142c492ce807de">operator&gt;&gt;</a></div><div class="ttdeci">std::istream &amp; operator&gt;&gt;(std::istream &amp;strm, MacierzKw&lt; T, R &gt; &amp;M)</div><div class="ttdoc">Wczytanie wartości do macierzy.</div><div class="ttdef"><b>Definition:</b> MacierzKw.hh:356</div></div>
+<div class="ttc" id="aMacierzKw_8hh_html_aecefbfb5b448701bd4142c492ce807de"><div class="ttname"><a href="MacierzKw_8hh.html#aecefbfb5b448701bd4142c492ce807de">operator&gt;&gt;</a></div><div class="ttdeci">std::istream &amp; operator&gt;&gt;(std::istream &amp;strm, MacierzKw&lt; T, R &gt; &amp;M)</div><div class="ttdoc">Wczytanie wartości do macierzy.</div><div class="ttdef"><b>Definition:</b> MacierzKw.hh:357</div></div>
 <div class="ttc" id="aclassMacierzKw_html_aa8a87c54933ecf5d5597d75931c54acc"><div class="ttname"><a href="classMacierzKw.html#aa8a87c54933ecf5d5597d75931c54acc">MacierzKw::odwroc</a></div><div class="ttdeci">const MacierzKw &amp; odwroc()</div><div class="ttdoc">Odwracanie macierzy kwadratowej metodą Gaussa-Jordana.</div><div class="ttdef"><b>Definition:</b> MacierzKw.hh:300</div></div>
 <div class="ttc" id="aclassMacierzKw_html_adacc92de732f8ca668ef83ba02e95965"><div class="ttname"><a href="classMacierzKw.html#adacc92de732f8ca668ef83ba02e95965">MacierzKw::MacierzKw</a></div><div class="ttdeci">MacierzKw()=default</div><div class="ttdoc">Konstruktor nowego obiektu Macierz Kwadratowa.</div></div>
 <div class="ttc" id="aclassMacierzKw_html_a5dccadd4dbe198e3c73bd3ed8a7de55e"><div class="ttname"><a href="classMacierzKw.html#a5dccadd4dbe198e3c73bd3ed8a7de55e">MacierzKw::operator+</a></div><div class="ttdeci">MacierzKw operator+(const MacierzKw &amp;M2) const</div><div class="ttdoc">Dodawania dwóch macierzy kwadratowych.</div><div class="ttdef"><b>Definition:</b> MacierzKw.hh:167</div></div>
 <div class="ttc" id="aclassMacierzKw_html_a2707de573a1672d6788668c432218cd0"><div class="ttname"><a href="classMacierzKw.html#a2707de573a1672d6788668c432218cd0">MacierzKw::transponuj</a></div><div class="ttdeci">const MacierzKw &amp; transponuj()</div><div class="ttdoc">Transponowanie macierzy kwadratowej.</div><div class="ttdef"><b>Definition:</b> MacierzKw.hh:256</div></div>
-<div class="ttc" id="aMacierzKw_8hh_html_ac6911ccce07907d463b360f890d9e114"><div class="ttname"><a href="MacierzKw_8hh.html#ac6911ccce07907d463b360f890d9e114">operator&lt;&lt;</a></div><div class="ttdeci">std::ostream &amp; operator&lt;&lt;(std::ostream &amp;strm, const MacierzKw&lt; T, R &gt; &amp;M)</div><div class="ttdoc">Wypisanie wartości z macierzy.</div><div class="ttdef"><b>Definition:</b> MacierzKw.hh:365</div></div>
+<div class="ttc" id="aMacierzKw_8hh_html_ac6911ccce07907d463b360f890d9e114"><div class="ttname"><a href="MacierzKw_8hh.html#ac6911ccce07907d463b360f890d9e114">operator&lt;&lt;</a></div><div class="ttdeci">std::ostream &amp; operator&lt;&lt;(std::ostream &amp;strm, const MacierzKw&lt; T, R &gt; &amp;M)</div><div class="ttdoc">Wypisanie wartości z macierzy.</div><div class="ttdef"><b>Definition:</b> MacierzKw.hh:366</div></div>
 <div class="ttc" id="aclassMacierzKw_html_adc1c36a527dcaf4df8eedbf869dc8eff"><div class="ttname"><a href="classMacierzKw.html#adc1c36a527dcaf4df8eedbf869dc8eff">MacierzKw::operator[]</a></div><div class="ttdeci">const Wektor&lt; T, R &gt; &amp; operator[](int index) const</div><div class="ttdoc">Dostęp do elementu tablicy w celu odczytu.</div><div class="ttdef"><b>Definition:</b> MacierzKw.hh:238</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

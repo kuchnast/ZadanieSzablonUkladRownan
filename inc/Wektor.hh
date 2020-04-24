@@ -5,6 +5,8 @@
 #include <stdio.h>
 #include <math.h>
 #include <iomanip>
+#include <LZespolona.hh>
+#include <rozmiar.hh>
 
 /**
  * @brief Klasa modeluje pojęcie wektora o stałym rozmiarze
@@ -130,9 +132,10 @@ public:
 /**
  * @brief Oblicza długość wektora
  * 
- * @return T dlugosc wektora jako liczbe zmiennoprzecinkową
+ * @return double dlugosc wektora jako liczbe zmiennoprzecinkową
  */
-  T dlugosc() const;
+  double dlugosc() const;
+
 };
 
 /**
@@ -307,14 +310,25 @@ T &Wektor<T, R>::operator[](int index)
 }
 
 template <class T, int R>
-T Wektor<T, R>::dlugosc() const
+double Wektor<T, R>::dlugosc() const
 {
-  T dl = 0;
+  double dl = 0;
 
   for (int i = 0; i < R; i++)
     dl += pow((*this)[i], 2);
   return sqrt(dl);
 }
+
+template<>
+double Wektor<LZespolona, ROZMIAR>::dlugosc() const
+{
+  LZespolona dl;
+
+  for (int i = 0; i < ROZMIAR; i++)
+    dl += (*this)[i] * Sprzezenie((*this)[i]);
+  return sqrt(Modul(dl));
+}
+
 
 template <class T, int R>
 Wektor<T, R> operator*(T l, const Wektor<T, R> &W2)
@@ -346,7 +360,7 @@ template <class T, int R>
 std::ostream &operator<<(std::ostream &strm, const Wektor<T, R> &W)
 {
   for (int i = 0; i < R; i++)
-    strm << std::setw(3) << W[i] << " ";
+    strm << W[i] << " ";
 
   return strm;
 }

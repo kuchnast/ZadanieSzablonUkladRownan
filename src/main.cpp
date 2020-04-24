@@ -12,6 +12,7 @@
 #include "MacierzKw.hh"
 #include "UkladRownanLiniowych.hh"
 #include "LZespolona.hh"
+#include "rozmiar.hh"
 
 using std::cerr;
 using std::cin;
@@ -26,112 +27,109 @@ int main()
   cin >> rodzaj;
   switch (rodzaj)
   {
-  case 'r':
-  {
-    UkladRownanLiniowych<double, 3> UklRow[2];
-
-    cout << endl << "Układ równań liniowych o współczynikach rzeczywistych" << endl;
-
-    cout << endl
-         << " Start programu " << endl
-         << endl;
-    cin >> UklRow[0];
-    if (!cin.good())
+    case 'r':
     {
-      cout << "Błąd zapisu układu równań." << endl;
-      return -1;
-    }
-    cout << std::setprecision(4) << std::left;
-    cout << "Macierz A^T:" << endl
-         << UklRow[0].PrzekazA() << endl;
-    cout << "Wektor wyrazów wolnych b:" << endl
-         << UklRow[0].PrzekazB() << endl;
-    UklRow[1] = UklRow[0];
+      UkladRownanLiniowych<double, ROZMIAR> UklRow;
 
-    try
+      cout << endl << "Układ równań liniowych o współczynikach rzeczywistych" << endl << endl;
+
+      cin >> UklRow;
+      if (!cin.good())
+      {
+        cout << "Błąd zapisu układu równań." << endl;
+        return -1;
+      }
+
+      cout << std::fixed << std::setprecision(2);
+      cout << "Macierz A^T:" << endl << UklRow.PrzekazA() << endl;
+      cout << "Wektor wyrazów wolnych b:" << endl << UklRow.PrzekazB() << endl << endl;
+
+      try
+      {
+        UklRow.ObliczCramer();
+      }
+      catch (const std::out_of_range &e) //próba dostępu poza tablice
+      { 
+        cout << e.what() << endl;
+        cout << "Kończenie pracy programu" << endl;
+        return -1;
+      }
+      catch (const std::invalid_argument &e) //próba dzielenia przez 0
+      { 
+        cout << e.what() << endl;
+        cout << "Kończenie pracy programu" << endl;
+        return -1;
+      }
+      catch (const std::runtime_error &e) //wyznacznik równy 0
+      { 
+        cout << e.what() << endl;
+        cout << "Układ równań nie ma rozwiązań lub ma ich nieskończenie wiele." << endl;
+        return 0;
+      }
+
+      cout << "Rozwiązanie x = (x1";
+      for (int i = 2; i <= ROZMIAR; ++i)
+        cout << ", x" << i;
+      cout << "):" << endl << UklRow.PrzekazX() << endl << endl;
+
+      cout << "Wektor błędu:"<< endl << std::scientific << UklRow.WektorBledu() << endl << endl;
+      
+      break;
+    }
+    case 'z':
     {
-      UklRow[0].ObliczCramer();
-      UklRow[1].ObliczMacierzOdwrotna();
-    }
-    catch (const std::out_of_range &e)
-    { //próba dostępu poza tablice
-      cout << e.what() << endl;
-      cout << "Kończenie pracy programu" << endl;
-      return -1;
-    }
-    catch (const std::invalid_argument &e)
-    { //próba dzielenia przez 0
-      cout << e.what() << endl;
-      cout << "Kończenie pracy programu" << endl;
-      return -1;
-    }
-    catch (const std::runtime_error &e)
-    { //wyznacznik równy 0
-      cout << e.what() << endl;
-      cout << "Układ równań nie ma rozwiązań lub ma ich nieskończenie wiele." << endl;
-      return 0;
-    }
+      UkladRownanLiniowych<LZespolona, ROZMIAR> UklRow;
 
-    UklRow[0].WyswietlUkladBlad("Metoda Cramera");
-    UklRow[1].WyswietlUkladBlad("Metoda macierzy odwrotnej");
+      cout << endl << "Układ równań liniowych o współczynikach zespolonych"<< endl << endl;
 
-    break;
-  }
-  case 'z':
-  {
-    UkladRownanLiniowych<LZespolona, 3> UklRow[2];
+      cin >> UklRow;
+      if (!cin.good())
+      {
+        cout << "Błąd zapisu układu równań." << endl;
+        return -1;
+      }
 
-    cout << endl << "Układ równań liniowych o współczynikach zespolonych"<< endl;
+      cout << std::fixed << std::setprecision(2);
+      cout << "Macierz A^T:" << endl << UklRow.PrzekazA() << endl;
+      cout << "Wektor wyrazów wolnych b:" << endl << UklRow.PrzekazB() << endl << endl;
 
-    cout << endl
-         << " Start programu " << endl
-         << endl;
-    cin >> UklRow[0];
-    if (!cin.good())
+      try
+      {
+        UklRow.ObliczCramer();
+      }
+      catch (const std::out_of_range &e) //próba dostępu poza tablice
+      { 
+        cout << e.what() << endl;
+        cout << "Kończenie pracy programu" << endl;
+        return -1;
+      }
+      catch (const std::invalid_argument &e) //próba dzielenia przez 0
+      { 
+        cout << e.what() << endl;
+        cout << "Kończenie pracy programu" << endl;
+        return -1;
+      }
+      catch (const std::runtime_error &e) //wyznacznik równy 0
+      { 
+        cout << e.what() << endl;
+        cout << "Układ równań nie ma rozwiązań lub ma ich nieskończenie wiele." << endl;
+        return 0;
+      }
+
+      cout << "Rozwiązanie x = (x1";
+      for (int i = 2; i <= ROZMIAR; ++i)
+        cout << ", x" << i;
+      cout << "):" << endl << UklRow.PrzekazX() << endl << endl;
+
+      cout << "Wektor błędu:"<< endl << std::scientific << UklRow.WektorBledu() << endl << endl;
+      
+      break;
+    }
+    default:
     {
-      cout << "Błąd zapisu układu równań." << endl;
-      return -1;
+      cout << "Podano niewłaściwą opcje." << endl;
+      break;
     }
-    cout << std::setprecision(4) << std::left;
-    cout << "Macierz A^T:" << endl
-         << UklRow[0].PrzekazA() << endl;
-    cout << "Wektor wyrazów wolnych b:" << endl
-         << UklRow[0].PrzekazB() << endl;
-    UklRow[1] = UklRow[0];
-
-    try
-    {
-      UklRow[0].ObliczCramer();
-      UklRow[1].ObliczMacierzOdwrotna();
-    }
-    catch (const std::out_of_range &e)
-    { //próba dostępu poza tablice
-      cout << e.what() << endl;
-      cout << "Kończenie pracy programu" << endl;
-      return -1;
-    }
-    catch (const std::invalid_argument &e)
-    { //próba dzielenia przez 0
-      cout << e.what() << endl;
-      cout << "Kończenie pracy programu" << endl;
-      return -1;
-    }
-    catch (const std::runtime_error &e)
-    { //wyznacznik równy 0
-      cout << e.what() << endl;
-      cout << "Układ równań nie ma rozwiązań lub ma ich nieskończenie wiele." << endl;
-      return 0;
-    }
-
-    UklRow[0].WyswietlUkladBlad("Metoda Cramera");
-    UklRow[1].WyswietlUkladBlad("Metoda macierzy odwrotnej");
-    break;
-  }
-  default:
-  {
-    cout << "Podano niewłaściwą opcje." << endl;
-    break;
-  }
   }
 
   return 0;

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['wektor_48',['Wektor',['../classWektor.html',1,'']]]
+  ['wektor_51',['Wektor',['../classWektor.html',1,'']]]
 ];

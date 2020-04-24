@@ -9,15 +9,21 @@ using std::endl;
 using std::noshowpos;
 using std::showpos;
 
-LZespolona::LZespolona(double R){
-  (*this) = R;
+LZespolona::LZespolona()
+{
+  (*this).re = 0;
+  (*this).im = 0;
 }
 
-LZespolona &LZespolona::operator=(double C)
+LZespolona::LZespolona(double R)
 {
-  (*this).re = C;
+  (*this).re = R;
   (*this).im = 0;
+}
 
+LZespolona &LZespolona::operator=(double R)
+{
+  (*this) = LZespolona(R);
   return *this;
 }
  
@@ -87,16 +93,18 @@ LZespolona operator/(LZespolona L1, LZespolona L2)
 }
 
 LZespolona &operator+=(LZespolona &L1, LZespolona L2){
-  L1.re += L2.re;
-  L1.im += L2.re;
-
+  L1 = L1 + L2;
   return L1;
 }
 
 LZespolona &operator-=(LZespolona &L1, LZespolona L2){
-  L1.re -= L2.re;
-  L1.im -= L2.re;
+  L1 = L1 + L2;
+  return L1;
+}
 
+LZespolona &operator*=(LZespolona &L1, LZespolona L2)
+{
+  L1 = L1 * L2;
   return L1;
 }
 

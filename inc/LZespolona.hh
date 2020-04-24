@@ -7,21 +7,21 @@
   */
 struct LZespolona
 {
-  double re; ///< Część rzeczywista liczby zespolonej */
-  double im; ///< Część urojona liczby zespolonej */
+  double re; ///< Część rzeczywista liczby zespolonej
+  double im; ///< Część urojona liczby zespolonej
 
 /**
  * @brief Domyślny konstruktor nowego obiektu LZespolona
  * 
  */
-  LZespolona() = default;
+  LZespolona();
 
-  /**
+/**
  * @brief Konstruktor nowego obiektu LZespolona z przypisaniem do niego liczby rzeczywistej
  * 
  * @param R liczba rzeczywista
  */
-  explicit LZespolona(double R);
+  LZespolona(double R);
 
 /**
  * @brief Przypisanie liczby rzeczywistej do zespolonej
@@ -122,6 +122,15 @@ LZespolona &operator+=(LZespolona &L1, LZespolona L2);
  * @return LZespolona& różnica dwóch liczb zespolonych jako zmieniona odmienna
  */
 LZespolona &operator-=(LZespolona &L1, LZespolona L2);
+
+/**
+ * @brief Mnożenie z przypisaniem dwóch liczb zespolonych
+ * 
+ * @param L1 pierwszy czynnik
+ * @param L2 drugi czynnik
+ * @return LZespolona& iloczyn dwóch liczb zespolonych jako zmieniona odmienna
+ */
+LZespolona &operator*=(LZespolona &L1, LZespolona L2);
 
 /**
  * @brief Porównanie dwóch liczb zespolonych

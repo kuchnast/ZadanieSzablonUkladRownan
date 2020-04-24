@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['lzespolona_45',['LZespolona',['../structLZespolona.html',1,'']]]
+  ['lzespolona_48',['LZespolona',['../structLZespolona.html',1,'']]]
 ];
