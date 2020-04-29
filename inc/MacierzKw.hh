@@ -100,9 +100,9 @@ public:
 /**
  * @brief Transponowanie macierzy kwadratowej
  * 
- * @return const MacierzKw& transponowana macierz z wejścia
+ * @return const MacierzKw transponowana macierz z wejścia
  */
-  const MacierzKw &transponuj();
+  const MacierzKw transponuj() const;
 
 /**
  * @brief Wyznacznik macierzy kwadratowej obliczany metodą Gaussa
@@ -115,9 +115,9 @@ public:
 /**
  * @brief Odwracanie macierzy kwadratowej metodą Gaussa-Jordana
  * 
- * @return const MacierzKw& odwrócona macierz wejściowa
+ * @return const MacierzKw odwrócona macierz wejściowa
  */
-  const MacierzKw &odwroc();
+  const MacierzKw odwroc() const;
 };
 
 /**
@@ -253,15 +253,15 @@ Wektor<T, R> &MacierzKw<T, R>::operator[](int index)
 }
 
 template <class T, int R>
-const MacierzKw<T, R> &MacierzKw<T, R>::transponuj()
+const MacierzKw<T, R> MacierzKw<T, R>::transponuj() const
 {
-  MacierzKw<T, R> Temp = (*this);
+  MacierzKw<T, R> Temp;
 
   for (int i = 0; i < R; i++)
     for (int j = 0; j < R; j++)
-      (*this)[i][j] = Temp[j][i];
+      Temp[i][j] = (*this)[j][i];
 
-  return (*this);
+  return Temp;
 }
 
 template <class T, int R>
@@ -269,7 +269,7 @@ T MacierzKw<T, R>::wyznacznik() const
 {
   int i, j;
   MacierzKw<T, R> Wyz = (*this);
-  T temp = 1;
+  T temp(1);
 
   for (i = 0; i < R; i++)
   { //petla kolejnych elementów z przekątnej
@@ -279,7 +279,7 @@ T MacierzKw<T, R>::wyznacznik() const
       while (Wyz[j][i] == 0)
       {
         if (++j == R)
-          return 0; //macierz jest osobliwa
+          return T(0); //macierz jest osobliwa
       }
       Wyz[i] = Wyz[j];
       Wyz[j] = -(*this)[i];
@@ -289,7 +289,7 @@ T MacierzKw<T, R>::wyznacznik() const
     { //petla zerowania kolejnych kolumn
       Wyz[j] += (-Wyz[j][i] / Wyz[i][i]) * Wyz[i];
       if (Wyz[j].dlugosc() == 0)
-        return 0;
+        return T(0);
     }
     temp *= Wyz[i][i];
   }
@@ -297,7 +297,7 @@ T MacierzKw<T, R>::wyznacznik() const
 }
 
 template <class T, int R>
-const MacierzKw<T, R> &MacierzKw<T, R>::odwroc()
+const MacierzKw<T, R> MacierzKw<T, R>::odwroc() const
 {
   int i, j;
   T mnoznik;
@@ -342,9 +342,8 @@ const MacierzKw<T, R> &MacierzKw<T, R>::odwroc()
       A[j] += mnoznik * A[i];
     }
   }
-  (*this) = OdwA;
 
-  return (*this);
+  return OdwA;
 }
 
 template <class T, int R>

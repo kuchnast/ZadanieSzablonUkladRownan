@@ -21,7 +21,7 @@ struct LZespolona
  * 
  * @param R liczba rzeczywista
  */
-  LZespolona(double R);
+  explicit LZespolona(double R);
 
 /**
  * @brief Przypisanie liczby rzeczywistej do zespolonej

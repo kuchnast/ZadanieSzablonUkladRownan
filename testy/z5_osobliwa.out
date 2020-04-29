@@ -1,0 +1,15 @@
+
+Układ równań liniowych o współczynikach zespolonych
+
+Macierz A^T:
+(2.00) (2.00-2.00i) (1.00+i) (-9.00) (6.00) 
+(1.00) (2.00+2.00i) (1.50i) (8.50i) (3.00) 
+(1.00) (2.00+2.00i) (1.50i) (8.50i) (3.00) 
+(4.00) (5.00+5.00i) (8.00) (12.00i) (2.00) 
+(-4.00i) (i) (2.00i) (22.00+i) (4.00) 
+
+Wektor wyrazów wolnych b:
+(1.00+i) (6.00) (22.00i) (63.00i) (-12.00) 
+
+Wyznacznik jest równy 0.
+Układ równań nie ma rozwiązań lub ma ich nieskończenie wiele.

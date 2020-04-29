@@ -142,21 +142,19 @@ const MacierzKw<T, R> &UkladRownanLiniowych<T, R>::PrzekazA() const
 template <class T, int R>
 void UkladRownanLiniowych<T, R>::ObliczMacierzOdwrotna()
 {
-  MacierzKw<T, R> OdwA = this->m_A;
-  this->m_x = OdwA.odwroc() * this->m_b;
+  this->m_x = this->m_A.odwroc() * this->m_b;
 }
 
 template <class T, int R>
 void UkladRownanLiniowych<T, R>::ObliczCramer()
 {
-  MacierzKw<T, R> tempA = this->m_A;
+  MacierzKw<T, R> tempA = this->m_A.transponuj();
   Wektor<T, R> tempWiersz;
   T detX, detA = tempA.wyznacznik();
 
   if (detA == 0)
     throw(std::runtime_error("Wyznacznik jest równy 0."));
 
-  tempA.transponuj();
   for (int i = 0; i < R; ++i)
   {
     tempWiersz = tempA[i];

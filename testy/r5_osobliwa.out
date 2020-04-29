@@ -1,0 +1,15 @@
+
+Układ równań liniowych o współczynikach rzeczywistych
+
+Macierz A^T:
+1.00 2.00 3.00 4.00 5.00 
+1.00 2.00 3.00 4.00 5.00 
+323.00 21.00 5.00 4.00 5.00 
+2.00 4.00 6.00 8.00 10.00 
+2.00 4.00 6.00 8.00 10.00 
+
+Wektor wyrazów wolnych b:
+6.00 6.00 54.00 12.00 12.00 
+
+Wyznacznik jest równy 0.
+Układ równań nie ma rozwiązań lub ma ich nieskończenie wiele.
